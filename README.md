@@ -1,6 +1,6 @@
 This repo contains a random assortment of nix packaged apps.
 
-To run an app run `nix run github:loco-choco/locochoconix#APPNAME`. The default app is ltspice.
+To run an app run `nix run github:loco-choco/loconix#APPNAME`. The default app is ltspice.
 
 ## Garbage Collecting the wine based apps
 

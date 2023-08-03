@@ -14,3 +14,7 @@ that window appears because of how the installer was coded, and won't have any c
 so ignore it and close it. Then a new windows will open, from now on new instances of ltspice will have the correct configs.
 
 The configs can be located at `~/.config/ltspice`. For now only the `lib` folder is available, which is where you should add your custom component models.
+
+## u-center
+
+For some reason you need to have `unzip` on your system to get this installed (even with the derivation having `unzip` in the build inputs), so before running the run command, if you don't have `unzip` on your system, run `nix-shell -p unzip`.

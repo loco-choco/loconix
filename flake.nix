@@ -14,12 +14,12 @@
     in with (pkgs // erosanix.packages.x86_64-linux // erosanix.lib.x86_64-linux); {
       default = self.packages.x86_64-linux.ltspice;
 
-       ucenter = callPackage ./ucenter/ucenter.nix {
+       ucenter = callPackage ./ucenter/default.nix {
         inherit mkWindowsApp makeDesktopIcon copyDesktopIcons;
         wine = wineWowPackages.full;
       };    
 
-      ltspice = callPackage ./ltspice/ltspice.nix {
+      ltspice = callPackage ./ltspice/default.nix {
         inherit mkWindowsApp makeDesktopIcon copyDesktopIcons;
         wine = wineWowPackages.full;
       };

@@ -8,14 +8,14 @@
   outputs = { self, flake-utils, flake-compat, erosanix, nixpkgs }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-      erosanix-lib-overlay = final: prev: {
-        mkWindowsApp = erosanix.lib.${system}.mkWindowsApp;
-        makeDesktopIcon = erosanix.lib.${system}.makeDesktopIcon;
-        copyDesktopIcons = erosanix.lib.${system}.copyDesktopIcons;
-      };
+      #erosanix-lib-overlay = final: prev: {
+      #  mkWindowsApp = erosanix.lib.${system}.mkWindowsApp;
+      #  makeDesktopIcon = erosanix.lib.${system}.makeDesktopIcon;
+      #  copyDesktopIcons = erosanix.lib.${system}.copyDesktopIcons;
+      #};
         pkgs = (import nixpkgs) {
           inherit system;
-	  overlays = [ self.overlay.wineApps erosanix-lib-overlay];
+	  overlays = [ self.overlay.wineApps self.overlay.erosanix-lib];
 	};
       in rec {
         packages = rec {
@@ -26,5 +26,10 @@
       }
     ) // {
       overlay.wineApps = import ./overlay.nix;
+      overlay.erosanix-lib = final: prev: {
+        mkWindowsApp = erosanix.lib.x86_64-linux.mkWindowsApp;
+        makeDesktopIcon = erosanix.lib.x86_64-linux.makeDesktopIcon;
+        copyDesktopIcons = erosanix.lib.x86_64-linux.copyDesktopIcons;
+      };
     };
 }
